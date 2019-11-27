@@ -20,7 +20,7 @@ To run:
 ```python
 ./Benchmark.sh <frames> <time> <interval> <faces>
 ```
-  **frames** are the number of frames to run for
-  **time** is the time in seconds to run benchmark for
-  **interval** is the time in seconds between each benchmark output
-  **faces** is the number of faces
+  **frames** are the number of frames to run for  
+  **time** is the time in seconds to run benchmark for  
+  **interval** is the time in seconds between each benchmark output  
+  **faces** is the number of faces  
