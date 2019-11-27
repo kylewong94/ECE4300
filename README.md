@@ -20,7 +20,7 @@ Facial Recognization Software:	Python3.6.8 | OpenCV 3.2 | Python3-tk 3.6.8
 ```python
 ./Benchmark.sh <frames> <time> <interval> <faces>
 ```
-  **frames** are the number of frames to run for  
-  **time** is the time in seconds to run benchmark for  
-  **interval** is the time in seconds between each benchmark output  
-  **faces** is the number of faces  
+  **frames** - number of frames to run for  
+  **time** - time in seconds to run the benchmark for  
+  **interval** - time in seconds between each benchmark output  
+  **faces** - number of faces  
