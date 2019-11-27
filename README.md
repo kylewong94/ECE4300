@@ -13,7 +13,6 @@ Linux Distro: ArchLinux ARM
 Ubuntu 18.04
 
 ## Software
-Main USB Camera Library:
 Facial Recognization Software:	Python3.6.8 | OpenCV 3.2 | Python3-tk 3.6.8
 
 ## To run
