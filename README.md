@@ -16,6 +16,8 @@ Ubuntu 18.04
 Facial Recognization Software:	Python3.6.8 | OpenCV 3.2 | Python3-tk 3.6.8
 
 ## To run
+Ensure Python3 is installed, as well as OpenCV and numpy!
+
 ```python
 sudo sh Benchmark.sh <frames> <time> <interval> <faces>
 ```
