@@ -1,0 +1,5 @@
+Linux 4.19.75-v7+ (raspberrypi) 	26/11/19 	_armv7l_	(4 CPU)
+
+23:33:56        CPU     %user     %nice   %system   %iowait    %steal     %idle
+23:33:57        all     24.87      0.00      2.01      0.00      0.00     73.12
+Average:        all     24.87      0.00      2.01      0.00      0.00     73.12

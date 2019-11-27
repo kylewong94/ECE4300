@@ -1,0 +1,107 @@
+import cv2
+import numpy as np
+import time
+import sys
+
+sys.path.insert(1, '../Utilities/Multithreading')
+from threads import *
+
+sem = threading.Semaphore()
+##########################################
+## Inits
+##########################################
+FramesToCapture = 120
+
+cascPath        = "haarcascades/haarcascade_frontalface_default.xml"
+faceCascade     = cv2.CascadeClassifier(cascPath)
+##########################################
+
+def CamRead():
+	print("Running Cam Read")
+	global Return
+	global Frame
+	global USBCamDev
+	sem.acquire()
+	print("CamRead acquired semaphore")
+	Return, Frame = USBCamDev.read()
+	sem.release()
+	print("CamRead released Semaphore")
+	time.sleep(1)
+	CamRead()
+
+#def CaptureFrames():
+#	time.sleep(1)
+#	while not sem.acquire(blocking=False):
+#		time.sleep(0.5)
+#	else:
+#		global TimeTable
+#		global FrameCounter
+#		sem.acquire()
+#		Size = len(TimeTable)
+#		total = 0
+#		fps = 0
+#		for i in range(Size):
+#			total += TimeTable[i]
+#		fps = total/Size
+#		print("Total FPS: " + str(fps))
+#		sem.release()
+#		time.sleep(5)
+#		CaptureFrames()		 	
+#		
+		
+
+def RunUSBCam():
+	print("Running USB CAM")
+	while not sem.acquire(blocking=False):
+		print("Semaphore not avaiable in RUNUSBCAM")
+		time.sleep(2)
+	else:	
+		global Frame
+		print("Semaphore Received: RUNUSBCAM")
+		sem.acquire()
+		Color = cv2.cvtColor(Frame, cv2.COLOR_BGR2GRAY)
+		cv2.imshow('Feed', Color)
+		if cv2.waitKey(1) & 0XFF == ord('q'):
+			USBCamDev.release()
+			cv2.destroyAllWindows()
+		sem.release()
+		print("Sem Released")
+		time.sleep(0.25)
+		RunUSBCam()
+
+
+############################################################
+## MAIN PROGRAM
+############################################################
+CamValInit = cv2.VideoCapture(0)
+Return, Frame = CamValInit.read()
+#CamVals = [Return, Frame]
+CamValInit.release()
+
+USBCamDev = cv2.VideoCapture(0)
+
+#TimeTable = []
+#FrameCounter = 0
+def main():
+
+	ReadThread = threading.Thread(target=CamRead)
+	StreamThread = threading.Thread(target=RunUSBCam)
+#	FrameCount = threading.Thread(target=CaptureFrames) 
+	#ReadThread   = Thread(1, CamRead, CamVals) 
+	#StreamThread = Thread(2, RunUSBCam, CamVals)
+	ReadThread.start()
+	StreamThread.start()
+#	FrameCount.start()
+
+if __name__ == '__main__':
+	main()
+
+
+
+
+
+
+
+
+
+
