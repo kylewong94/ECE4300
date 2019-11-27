@@ -6,17 +6,8 @@ from CameraThread import CameraThread
 from FaceDetection import FaceDetection
 from IOThread import IOThread
 
-#parser = argparse.ArgumentParser(description="Frames to run for")
-#parser.add_argument('frames', metavar='frames', type=int, help='number of frames to run for')
-
-#args = parser.parse_args()
-
-
-# change this shit
-#run 1
-#max_frames = 10
-#run 2
 max_frames = int(sys.argv[1])
+
 # mulithreading stuff
 shared1 = []
 shared2 = []
