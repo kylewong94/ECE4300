@@ -7,6 +7,7 @@ Kyle Wong, George Kotobuki, Edan Nankin, Kenneth Livingword, Athan Alcala
 
 # Hardware
 Platform: Raspberry Pi 3
+
 Linux Distro: ArchLinux ARM 
 
 # Current development operating system
